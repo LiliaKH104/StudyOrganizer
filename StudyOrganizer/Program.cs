@@ -13,11 +13,6 @@ namespace StudyOrganizer
             program.Start();
         }
 
-
-        // ==================================================
-        // START PROGRAM
-        // ==================================================
-
         private void Start()
         {
             Console.Clear();
@@ -32,17 +27,12 @@ namespace StudyOrganizer
             MainPage();
         }
 
-
-        // ==================================================
-        // MAIN PAGE
-        // ==================================================
-
         private void MainPage()
         {
-            Console.WriteLine("If you want to see your courses      press (1)");
-            Console.WriteLine("If you want to add a course          press (2)");
-            Console.WriteLine("If you want to update your grades    press (3)");
-            Console.WriteLine("If you want to exit                  press (0)");
+            Console.WriteLine("If you want to see your courses       press (1)");
+            Console.WriteLine("If you want to add a course           press (2)");
+            Console.WriteLine("If you want to update your grades     press (3)");
+            Console.WriteLine("If you want to exit                   press (0)");
             Console.WriteLine();
 
             int a = ReadInt("Choose an option: ");
@@ -77,11 +67,6 @@ namespace StudyOrganizer
             }
         }
 
-
-        // ==================================================
-        // SHOW COURSES
-        // ==================================================
-
         private void ShowCourses()
         {
             Console.Clear();
@@ -113,11 +98,6 @@ namespace StudyOrganizer
             MainPage();
         }
 
-
-        // ==================================================
-        // ADD COURSE
-        // ==================================================
-
         private void AddCourse()
         {
             Console.Clear();
@@ -126,10 +106,6 @@ namespace StudyOrganizer
             Console.WriteLine("              ADD NEW SUBJECT                 ");
             Console.WriteLine("==============================================");
             Console.WriteLine();
-
-            // ==========================================
-            // BASIC INFORMATION
-            // ==========================================
 
             Console.WriteLine("------------ Basic Information -------------");
             Console.WriteLine();
@@ -146,58 +122,27 @@ namespace StudyOrganizer
             Console.Write("Class time: ");
             string time = Console.ReadLine();
 
-
-            // ==========================================
-            // EXAM DATES
-            // ==========================================
-
             Console.WriteLine();
             Console.WriteLine("--------------- Exam Dates -----------------");
             Console.WriteLine();
 
-            DateTime midterm1 =
-                ReadDate("Midterm 1 date (dd/MM/yyyy): ");
-
-            DateTime midterm2 =
-                ReadDate("Midterm 2 date (dd/MM/yyyy): ");
-
-            DateTime final =
-                ReadDate("Final exam date (dd/MM/yyyy): ");
-
-
-            // ==========================================
-            // GRADE PERCENTAGES
-            // ==========================================
+            DateTime midterm1 = ReadDate("Midterm 1 date (dd/MM/yyyy): ");
+            DateTime midterm2 = ReadDate("Midterm 2 date (dd/MM/yyyy): ");
+            DateTime final = ReadDate("Final exam date (dd/MM/yyyy): ");
 
             Console.WriteLine();
             Console.WriteLine("----------- Grade Percentages --------------");
             Console.WriteLine();
 
-            int m1p =
-                ReadInt("Midterm 1 percentage: ");
-
-            int m2p =
-                ReadInt("Midterm 2 percentage: ");
-
-            int fp =
-                ReadInt("Final percentage: ");
-
-            int partic =
-                ReadInt("Participation percentage: ");
-
-            int attandance =
-                ReadInt("Attendance percentage: ");
-
-            int proj =
-                ReadInt("Project percentage: ");
-
-
-            // ==========================================
-            // CHECK PERCENTAGES
-            // ==========================================
+            int m1p = ReadInt("Midterm 1 percentage: ");
+            int m2p = ReadInt("Midterm 2 percentage: ");
+            int fp = ReadInt("Final percentage: ");
+            int partic = ReadInt("Participation percentage: ");
+            int attendance = ReadInt("Attendance percentage: ");
+            int proj = ReadInt("Project percentage: ");
 
             int totalPercentage =
-                m1p + m2p + fp + partic + attandance + proj;
+                m1p + m2p + fp + partic + attendance + proj;
 
             Console.WriteLine();
             Console.WriteLine($"Total percentage: {totalPercentage}%");
@@ -205,10 +150,7 @@ namespace StudyOrganizer
             if (totalPercentage != 100)
             {
                 Console.WriteLine();
-                Console.WriteLine(
-                    "WARNING: The percentages should add up to 100%."
-                );
-
+                Console.WriteLine("WARNING: The percentages should add up to 100%.");
                 Console.WriteLine();
                 Console.WriteLine("Press any key to return...");
                 Console.ReadKey();
@@ -218,37 +160,16 @@ namespace StudyOrganizer
                 return;
             }
 
-
-            // ==========================================
-            // CURRENT GRADES
-            // ==========================================
-
             Console.WriteLine();
             Console.WriteLine("-------------- Current Grades --------------");
             Console.WriteLine();
 
-            float m1g =
-                ReadFloat("Midterm 1 grade: ");
-
-            float m2g =
-                ReadFloat("Midterm 2 grade: ");
-
-            float fg =
-                ReadFloat("Final grade: ");
-
-            float participg =
-                ReadFloat("Participation grade: ");
-
-            float atteng =
-                ReadFloat("Attendance grade: ");
-
-            float projg =
-                ReadFloat("Project grade: ");
-
-
-            // ==========================================
-            // SAVE SUBJECT
-            // ==========================================
+            float m1g = ReadFloat("Midterm 1 grade: ");
+            float m2g = ReadFloat("Midterm 2 grade: ");
+            float fg = ReadFloat("Final grade: ");
+            float participg = ReadFloat("Participation grade: ");
+            float atteng = ReadFloat("Attendance grade: ");
+            float projg = ReadFloat("Project grade: ");
 
             repo.AddSubject(
                 subject,
@@ -262,7 +183,7 @@ namespace StudyOrganizer
                 m2p,
                 fp,
                 partic,
-                attandance,
+                attendance,
                 proj,
                 m1g,
                 m2g,
@@ -272,14 +193,9 @@ namespace StudyOrganizer
                 projg
             );
 
-
-            // ==========================================
-            // SUCCESS MESSAGE
-            // ==========================================
-
             Console.WriteLine();
             Console.WriteLine("==============================================");
-            Console.WriteLine("       ✓ SUBJECT ADDED SUCCESSFULLY!         ");
+            Console.WriteLine("       SUBJECT ADDED SUCCESSFULLY!            ");
             Console.WriteLine("==============================================");
 
             Console.WriteLine();
@@ -290,11 +206,6 @@ namespace StudyOrganizer
             MainPage();
         }
 
-
-        // ==================================================
-        // UPDATE GRADES
-        // ==================================================
-
         private void UpdateGrades()
         {
             Console.Clear();
@@ -304,7 +215,22 @@ namespace StudyOrganizer
             Console.WriteLine("==============================================");
             Console.WriteLine();
 
-            Console.WriteLine("This section is not implemented yet.");
+            Console.Write("Subject name: ");
+            string subject = Console.ReadLine();
+
+            Console.WriteLine();
+
+            int m1 = ReadInt("Midterm 1 grade: ");
+            int m2 = ReadInt("Midterm 2 grade: ");
+            int f = ReadInt("Final grade: ");
+            int p = ReadInt("Participation grade: ");
+            int a = ReadInt("Attendance grade: ");
+            int proj = ReadInt("Project grade: ");
+
+            repo.UpdateGrade(subject, m1, m2, f, p, a, proj);
+
+            Console.WriteLine();
+            Console.WriteLine("Grades updated successfully.");
 
             Console.WriteLine();
             Console.WriteLine("Press any key to return...");
@@ -313,11 +239,6 @@ namespace StudyOrganizer
             Console.Clear();
             MainPage();
         }
-
-
-        // ==================================================
-        // READ INTEGER
-        // ==================================================
 
         private int ReadInt(string message)
         {
@@ -332,16 +253,9 @@ namespace StudyOrganizer
                     return value;
                 }
 
-                Console.WriteLine(
-                    "Invalid input. Please enter a whole number."
-                );
+                Console.WriteLine("Invalid input. Please enter a whole number.");
             }
         }
-
-
-        // ==================================================
-        // READ FLOAT
-        // ==================================================
 
         private float ReadFloat(string message)
         {
@@ -356,16 +270,9 @@ namespace StudyOrganizer
                     return value;
                 }
 
-                Console.WriteLine(
-                    "Invalid input. Please enter a number."
-                );
+                Console.WriteLine("Invalid input. Please enter a number.");
             }
         }
-
-
-        // ==================================================
-        // READ DATE
-        // ==================================================
 
         private DateTime ReadDate(string message)
         {
